@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Parking System</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        /* Navbar styling */
+        nav {
+            width: 100%;
+            background-color: #007bff;
+            padding: 10px;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            position: absolute;
+            top: 0;
+        }
+
+        /* Container styling */
+        .container {
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Button styling */
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* CSRF token hidden input styling */
+        input[type="hidden"] {
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>Smart Parking System</nav>
+
+    <!-- Main container -->
+    <div class="container">
+        <h1>Available Parking Slots: {{ available_slots }}</h1>
+
+        <!-- Vehicle Entry Form -->
+        <form action="{% url 'vehicle_entry' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Vehicle Entry</button>
+        </form>
+
+        <!-- Vehicle Exit Form -->
+        <form action="{% url 'vehicle_exit' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Vehicle Exit</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        © 2024 Smart Parking System | Powered by Django
+    </footer>
+</body>
+</html>
